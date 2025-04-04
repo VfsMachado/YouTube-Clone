@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>YouClone</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <script src="https://unpkg.com/feather-icons"></script>
+  </head>
+  <body>
+    <!-- Cabeçalho -->
+    <header class="header">
+      <div class="header-left">
+        <i data-feather="menu" class="menu-icon"></i>
+        <div class="logo">YouClone</div>
+      </div>
+
+      <div class="search-container">
+        <div class="search-bar">
+            <input type="text" id="searchInput" placeholder="Pesquisar...">
+            <button id="searchButton">
+              <i class="fas fa-search"></i> <!-- Lupa FontAwesome -->
+            </button>
+            <button id="keyboardButton">
+              <i class="fas fa-keyboard"></i> <!-- Teclado FontAwesome -->
+            </button>
+            <button id="micButton">
+              <i class="fas fa-microphone"></i> <!-- Microfone FontAwesome -->
+            </button>
+          </div>
+      
+        <!-- Tags de Busca -->
+        <div class="search-tags"> 
+            <span>Tudo</span> 
+            <span>Jogos</span> 
+            <span>Musica</span> 
+            <span>Podcast</span> 
+            <span>Ao vivo</span> 
+        </div>
+      
+      </div>
+      
+      <div class="header-right">
+        <i data-feather="video" class="header-icon"></i>
+        <i data-feather="bell" class="header-icon"></i>
+        <i data-feather="user" class="header-icon"></i>
+      </div>
+
+    </header>
+   
+    <!-- Container principal -->
+    <div class="main-container">
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <ul>
+          <li><i data-feather="home"></i> <span>Início</span></li>
+          <li><i data-feather="zap"></i> <span>Shorts</span></li>
+          <li><i data-feather="layers"></i> <span>Inscrições</span></li>
+          <li><i data-feather="book"></i> <span>Biblioteca</span></li>
+        </ul>
+      </aside>
+
+      <!-- Vídeos -->
+      <div class="videos" id="videos"></div>
+    </div>
+
+    <!-- Script para ativar os ícones -->
+    <script>
+      feather.replace(); // Isso substitui os ícones data-feather no HTML
+    </script>
+    <script src="script.js"></script>
+  </body>
+</html>

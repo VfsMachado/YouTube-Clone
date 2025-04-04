@@ -1,0 +1,293 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", sans-serif;
+}
+
+/* GLOBAL */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #F9F9F9;
+}
+
+h1, h2, h3, .title {
+    color: #333333;
+}
+
+/* Botões de interação */
+button {
+    background-color: #FF0000;
+    color: white;
+    border: none;
+    padding: 10px;
+    border-radius: 5px;
+}
+
+button:hover {
+    background-color: #CC0000;
+}
+
+/* Links */
+a {
+    color: #1A73E8;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* HEADER GLOBAL */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #f8f8f8;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 10;
+}
+
+.header-left {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+/* Barra de pesquisa */
+.search-bar {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 30px;
+    padding: 5px 20px;
+    width: 500px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    position: relative;
+    transition: width 0.3s ease-in-out;
+}
+
+#searchInput {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    flex: 1;
+    padding: 10px;
+}
+
+#searchButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    margin-left: 10px;
+}
+
+#keyboardButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+}
+
+#micButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 10px;
+    position: absolute;
+    right: -40px;
+    margin-right: 10px;
+    z-index: 2;
+}
+
+#micButton i {
+    color: #606060;
+}
+
+#searchButton i {
+    color: #606060;
+}
+
+#micButton i:before {
+    content: '\f130'; /* Código do microfone */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+#keyboardButton i:before {
+    content: '\f11c'; /* Código do teclado */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+}
+
+/* Tags de Pesquisa */
+.search-tags {
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.search-tags span {
+    font-weight: bold;
+    font-size: 14px;
+    padding: 8px 16px;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 20px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-tags span:hover {
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 240px;
+    background-color: #f4f4f4;
+    padding: 20px;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    height: calc(100vh - 70px);
+    border-right: 1px solid #ddd;
+    transition: transform 0.3s ease-in-out;
+}
+
+.sidebar ul {
+    list-style: none;
+    padding: 0;
+}
+
+.sidebar li {
+    display: flex;
+    align-items: center;
+    padding: 12px 20px;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.sidebar li:hover {
+    background-color: #e8e8e8;
+    border-radius: 5px;
+}
+
+.sidebar li i {
+    margin-right: 12px;
+}
+
+.sidebar li span {
+    font-size: 14px;
+}
+
+/* CONTAINER PRINCIPAL */
+.container {
+    display: flex;
+}
+
+/* VIDEOS */
+.videos {
+    margin-left: 260px;
+    padding: 20px;
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.video-card {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.08);
+    transition: transform 0.2s, box-shadow 0.2s;
+    cursor: pointer;
+}
+
+.video-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.video-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-bottom: 1px solid #eee;
+}
+
+.video-card h4 {
+    margin: 10px;
+    font-size: 16px;
+}
+
+.video-card p {
+    margin: 0 10px 10px;
+    font-size: 14px;
+    color: #606060;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .search-bar {
+        width: 80%;
+    }
+
+    .video-player iframe {
+        height: 360px;
+    }
+
+    .video-title {
+        font-size: 1.4rem;
+    }
+
+    .meta-info {
+        font-size: 12px;
+    }
+
+    .channel-info {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .channel-info .subscribe-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .container {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        padding: 10px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        height: 100%;
+        transform: translateX(-100%);
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .videos {
+        margin-left: 0;
+        padding: 10px;
+        grid-template-columns: 1fr 1fr;
+    }
+}
