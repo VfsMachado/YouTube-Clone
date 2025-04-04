@@ -14,11 +14,10 @@ document.addEventListener("DOMContentLoaded", () => {
         renderVideos(allVideos);
       });
   
-    // Renderiza vídeos na tela
+    // Renderiza vídeos
     function renderVideos(videos) {
       const container = document.getElementById("videos");
       container.innerHTML = "";
-  
       videos.forEach(video => {
         const card = document.createElement("div");
         card.className = "video-card";
@@ -49,14 +48,14 @@ document.addEventListener("DOMContentLoaded", () => {
     // Busca de vídeos
     document.getElementById("searchInput").addEventListener("input", (e) => {
       const term = e.target.value.toLowerCase();
-      const filtered = allVideos.filter(video => 
-        video.titulo.toLowerCase().includes(term) || 
+      const filtered = allVideos.filter(video =>
+        video.titulo.toLowerCase().includes(term) ||
         video.canal.toLowerCase().includes(term)
       );
       renderVideos(filtered);
     });
   
-    // Dark Mode Toggle (adicione um botão no header)
+    // Botão de Dark Mode
     const darkModeToggle = document.createElement("button");
     darkModeToggle.innerHTML = '<i data-feather="moon"></i>';
     darkModeToggle.id = "darkModeToggle";
@@ -66,20 +65,4 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.querySelector(".header-right").prepend(darkModeToggle);
   });
-  function renderVideos(videos) {
-    const container = document.getElementById('videos');
-    container.innerHTML = videos.map(video => `
-      <div class="video-card">
-        <img src="${video.thumb}" class="video-thumbnail">
-        <div class="video-info">
-          <img src="${video.avatar}" class="channel-avatar">
-          <div class="video-details">
-            <h4>${video.titulo}</h4>
-            <p>${video.canal}</p>
-            <p>${video.views} • ${video.data}</p>
-          </div>
-        </div>
-      </div>
-    `).join('');
-  }
   
