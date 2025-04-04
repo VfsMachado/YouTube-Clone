@@ -64,6 +64,8 @@
     cursor: pointer;
     padding: 8px;
     border-radius: 50%;
+    width: 40px;
+    height: 60px;
   }
   
   .menu-icon:hover {
@@ -79,7 +81,16 @@
     font-weight: bold;
     color:#000;
   }
-  
+  .logo img {
+    height: 25px; /* ou o tamanho que preferir */
+    max-width: 100%;
+    object-fit: contain; /* para manter a proporção */
+  }
+  .logo-text {
+    font-size: 22px;
+    font-weight: bold;
+    color: red;
+  }
   /* BARRA DE PESQUISA */
   .search-container {
     display: flex;
