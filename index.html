@@ -17,10 +17,15 @@
     </div>
 
     <div class="search-container">
-      <div class="search-bar">
-        <input type="text" id="searchInput" placeholder="Pesquisar...">
-        <button id="searchButton"><i class="fas fa-search"></i></button>
-        <button id="micButton"><i class="fas fa-microphone"></i></button>
+        <div class="search-bar">
+          <input type="text" placeholder="Pesquisar" class="search-input">
+          <button class="search-button">
+            <i data-feather="search"></i>
+          </button>
+        </div>
+        <button class="voice-search-button">
+          <i data-feather="mic"></i>
+        </button>
       </div>
       <div class="filter-tags">
         <button class="filter-tag active">Tudo</button>

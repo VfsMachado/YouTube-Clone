@@ -83,33 +83,81 @@
   /* BARRA DE PESQUISA */
   .search-container {
     display: flex;
-    flex-direction: column;
     align-items: center;
     flex: 1;
     max-width: 650px;
-    margin: 0 20px;
+    margin: 0 40px;
   }
   
   .search-bar {
     display: flex;
-    align-items: center;
-    width: 100%;
+    width: 150%;
     height: 40px;
-    border: 1px solid var(--search-border);
+    border: 1px solid #ccc;
     border-radius: 40px;
     overflow: hidden;
-    background: var(--search-bg);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
   }
   
+  .search-input {
+    flex: 1;
+    border: none;
+    padding: 0 16px;
+    font-size: 16px;
+    outline: none;
+  }
+  
+  .search-button {
+    width: 64px;
+    height: 100%;
+    border: none;
+    background: #f8f8f8;
+    border-left: 1px solid #ccc;
+    cursor: pointer;
+    display: grid;
+    place-items: center;
+  }
+  
+  .voice-search-button {
+    margin-left: 12px;
+    background: #f9f9f9;
+    border: none;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    cursor: pointer;
+  }
+  
+  /* Efeitos hover */
+  .search-button:hover {
+    background: #f0f0f0;
+  }
+  
+  .voice-search-button:hover {
+    background: #f0f0f0;
+  }
+  
+  /* Modo escuro */
   .dark-mode .search-bar {
-    background: var(--search-dark-bg);
+    background: #121212;
     border-color: #303030;
   }
   
-  .search-bar:focus-within {
-    border-color: #1c62b9;
+  .dark-mode .search-input {
+    background: #121212;
+    color: white;
   }
   
+  .dark-mode .search-button {
+    background: #222;
+    border-color: #444;
+  }
+  
+  .dark-mode .voice-search-button {
+    background: #222;
+  }
   #searchInput {
     flex: 1;
     border: none;
