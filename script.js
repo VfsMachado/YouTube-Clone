@@ -66,5 +66,20 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.querySelector(".header-right").prepend(darkModeToggle);
   });
-
+  function renderVideos(videos) {
+    const container = document.getElementById('videos');
+    container.innerHTML = videos.map(video => `
+      <div class="video-card">
+        <img src="${video.thumb}" class="video-thumbnail">
+        <div class="video-info">
+          <img src="${video.avatar}" class="channel-avatar">
+          <div class="video-details">
+            <h4>${video.titulo}</h4>
+            <p>${video.canal}</p>
+            <p>${video.views} • ${video.data}</p>
+          </div>
+        </div>
+      </div>
+    `).join('');
+  }
   

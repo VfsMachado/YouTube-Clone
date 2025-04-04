@@ -22,12 +22,16 @@
         <button id="searchButton"><i class="fas fa-search"></i></button>
         <button id="micButton"><i class="fas fa-microphone"></i></button>
       </div>
-      <div class="search-tags">
-        <span>Tudo</span>
-        <span>Jogos</span>
-        <span>Música</span>
-        <span>Podcast</span> 
-        <span>Ao vivo</span>
+      <div class="filter-tags">
+        <button class="filter-tag active">Tudo</button>
+        <button class="filter-tag">Música</button>
+        <button class="filter-tag">Jogos</button>
+        <button class="filter-tag">Hip hop brasileiro</button>
+        <button class="filter-tag">Teamfight Tactics</button>
+        <button class="filter-tag">Mixes</button>
+        <button class="filter-tag">League of Legends</button>
+        <button class="filter-tag">Podcasts</button>
+        <button class="filter-tag">Pensamentos</button>
       </div>
     </div>
 
@@ -36,8 +40,11 @@
       <i data-feather="bell" class="header-icon"></i>
       <img src="https://placehold.co/32" class="user-avatar" alt="Usuário">
     </div>
+    
   </header>
-
+  <div class="videos-container" id="videos">
+    <!-- Os cards serão inseridos aqui via JavaScript -->
+  </div>
   <!-- Container principal -->
   <div class="main-container">
     <!-- Sidebar (recolhível) -->
