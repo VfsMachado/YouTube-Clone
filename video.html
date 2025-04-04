@@ -92,20 +92,157 @@
 
     <!-- Sidebar de Sugestões -->
     <aside class="suggestions">
-      <div class="suggestion-card">
-        <img src="https://placehold.co/168x94" class="suggestion-thumbnail">
-        <div class="suggestion-info">
-          <h4>PERSONAGENS QUE NÃO SÃO CHAMPIONS</h4>
-          <p>Cortes do Mylon</p>
-          <p>133 mil visualizações • há 2 meses</p>
-        </div>
+      <div id="suggested-videos">
+        <!-- Vídeos sugeridos carregados via JavaScript -->
       </div>
-      <!-- Mais sugestões... -->
     </aside>
   </main>
 
   <script>
     feather.replace();
+
+    // Dados do JSON (você pode substituí-los pelo conteúdo real do arquivo)
+    const videos = [
+  {
+    "id": "1",
+    "titulo": "Mix de Poetas no Topo 3.1 - Qualy | Rincon | Clara",
+    "canal": "YouTube Mix",
+    "views": "2,5 mi de visualizações",
+    "data": "Atualizado hoje",
+    "thumb": "https://i.ytimg.com/vi/abcdefghijk/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/red/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "2",
+    "titulo": "FIZ 10 ESQUADRÃO E INVOQUEI O TREM DA ALEGRIA!",
+    "canal": "Colônia",
+    "views": "9,7 mil visualizações",
+    "data": "há 5 dias",
+    "thumb": "https://i.ytimg.com/vi/lmnopqrstuv/hqdefault.jpg",
+    "avatar": "https://placehold.co/36",
+    "videoUrl": "#"
+  },
+  {
+    "id": "3",
+    "titulo": "Como fazer um clone do YouTube com HTML, CSS e JS",
+    "canal": "Dev Tips",
+    "views": "150 mil visualizações",
+    "data": "há 1 semana",
+    "thumb": "https://i.ytimg.com/vi/9bZkp7q19f0/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/green/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "4",
+    "titulo": "TOP 10 Dicas de CSS que Você Não Sabia",
+    "canal": "CSS Master",
+    "views": "500 mil visualizações",
+    "data": "há 1 mês",
+    "thumb": "https://i.ytimg.com/vi/0xMQfnTU6oo/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/blue/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "5",
+    "titulo": "Teamfight Tactics: Melhores Composições",
+    "canal": "Gameplay BR",
+    "views": "320 mil visualizações",
+    "data": "há 3 dias",
+    "thumb": "https://i.ytimg.com/vi/wxyz123456/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/yellow/black",
+    "videoUrl": "#"
+  },
+  {
+    "id": "6",
+    "titulo": "Hip Hop Brasileiro - Clássicos dos Anos 90",
+    "canal": "Música Raiz",
+    "views": "1,2 mi de visualizações",
+    "data": "há 2 anos",
+    "thumb": "https://i.ytimg.com/vi/789abc123de/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/purple/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "7",
+    "titulo": "Podcast: Conversa com Brendon Bressan",
+    "canal": "Flow Brasil",
+    "views": "780 mil visualizações",
+    "data": "há 2 semanas",
+    "thumb": "https://i.ytimg.com/vi/fghijk45678/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/orange/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "8",
+    "titulo": "Ao Vivo: Liga das Lendas - Semifinal",
+    "canal": "Esports TV",
+    "views": "AO VIVO",
+    "data": "Assistindo agora",
+    "thumb": "https://i.ytimg.com/vi/9012vwxyza/hqdefault_live.jpg",
+    "avatar": "https://placehold.co/36/red/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "9",
+    "titulo": "Shorts: Drible Impossível no FIFA 23",
+    "canal": "FIFA Maníacos",
+    "views": "5,4 mi de visualizações",
+    "data": "há 1 dia",
+    "thumb": "https://i.ytimg.com/vi/shorts/12345/hqdefault.jpg",
+    "avatar": "https://placehold.co/36",
+    "videoUrl": "#"
+  },
+  {
+    "id": "10",
+    "titulo": "Tutorial: Dark Mode com CSS",
+    "canal": "FrontEnd Tips",
+    "views": "42 mil visualizações",
+    "data": "há 5 horas",
+    "thumb": "https://i.ytimg.com/vi/cssdark123/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/black/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "11",
+    "titulo": "Vinícius13 - Análise de Novo Patch",
+    "canal": "vinícius13",
+    "views": "150 mil visualizações",
+    "data": "há 1 semana",
+    "thumb": "https://i.ytimg.com/vi/vini13patch/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/grey/white",
+    "videoUrl": "#"
+  },
+  {
+    "id": "12",
+    "titulo": "Luccas Carlos - Entrevista Exclusiva",
+    "canal": "Canal OFF",
+    "views": "2,1 mi de visualizações",
+    "data": "há 3 meses",
+    "thumb": "https://i.ytimg.com/vi/luccasoff/hqdefault.jpg",
+    "avatar": "https://placehold.co/36/brown/white",
+    "videoUrl": "#"
+  }
+];
+
+
+    // Função para criar os cards de vídeo sugerido dinamicamente
+    const suggestedVideosContainer = document.getElementById('suggested-videos');
+    videos.forEach(video => {
+      const suggestionCard = document.createElement('div');
+      suggestionCard.classList.add('suggestion-card');
+
+      suggestionCard.innerHTML = `
+        <img src="${video.thumb}" class="suggestion-thumbnail">
+        <div class="suggestion-info">
+          <h4><a href="${video.videoUrl}" target="_blank">${video.titulo}</a></h4>
+          <p>${video.can}al</p>
+          <p>${video.views} • ${video.data}</p>
+        </div>
+      `;
+
+      suggestedVideosContainer.appendChild(suggestionCard);
+    });
   </script>
 </body>
 </html>
