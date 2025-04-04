@@ -1,104 +1,83 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Assistir Vídeo - YouClone</title>
-    <link rel="stylesheet" href="style.css" />
-    <script src="https://unpkg.com/feather-icons"></script>
-  </head>
-  <body>
-    <header>
-      <div class="left-header">
-        <i data-feather="arrow-left" onclick="history.back()"></i>
-        <div class="logo">YouClone</div>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistir - YouClone</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <header class="header">
+    <div class="header-left">
+      <i data-feather="arrow-left" onclick="history.back()"></i>
+      <div class="logo">YouClone</div>
+    </div>
+    <div class="header-right">
+      <button id="darkModeToggle"><i data-feather="moon"></i></button>
+    </div>
+  </header>
+
+  <main class="watch-container">
+    <div class="watch-main">
+      <div class="video-player">
+        <iframe id="videoFrame" src="" frameborder="0" allowfullscreen></iframe>
       </div>
-    </header>
 
-    <main class="watch-container">
-      <div class="watch-main">
-        <div class="video-player">
-          <iframe
-            width="100%"
-            height="480"
-            src=""
-            title="Video Player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-
-        <h2 class="video-title">Carregando título...</h2>
-        <div class="video-meta">
-          <p class="meta-info">Visualizações • Data</p>
-          <div class="meta-buttons">
-            <button><i data-feather="thumbs-up"></i> Curtir</button>
-            <button><i data-feather="thumbs-down"></i> Não curtir</button>
-            <button><i data-feather="share-2"></i> Compartilhar</button>
-          </div>
-        </div>
-
-        <div class="channel-info">
-          <img class="avatar" src="" alt="Avatar do Canal" />
-          <h4>Nome do Canal</h4>
-          <button class="subscribe-btn">Inscreva-se</button>
-        </div>
-
-        <div class="description">
-          <p>Descrição do vídeo...</p>
+      <h1 id="videoTitle">Carregando...</h1>
+      <div class="video-actions">
+        <div class="views-date" id="viewsDate"></div>
+        <div class="action-buttons">
+          <button id="likeBtn"><i data-feather="thumbs-up"></i> <span id="likeCount">0</span></button>
+          <button id="dislikeBtn"><i data-feather="thumbs-down"></i></button>
+          <button id="shareBtn"><i data-feather="share-2"></i> Compartilhar</button>
         </div>
       </div>
 
-      <div class="watch-sidebar" id="sugestoes">
-        <!-- Vídeos sugeridos serão inseridos aqui via JS -->
+      <div class="channel-info">
+        <img id="channelAvatar" src="" alt="Canal">
+        <div>
+          <h3 id="channelName"></h3>
+          <p id="subscribers"></p>
+        </div>
+        <button id="subscribeBtn">Inscrever-se</button>
       </div>
-    </main>
 
-    <script>
-      document.addEventListener("DOMContentLoaded", () => {
-        feather.replace();
+      <div class="video-description" id="videoDescription"></div>
+    </div>
 
-        const video = JSON.parse(localStorage.getItem("videoAtual"));
+    <aside class="suggestions" id="suggestions"></aside>
+  </main>
 
-        if (video) {
-          // Atualiza o vídeo na página
-          document.querySelector("iframe").src = video.videoUrl;
-          document.querySelector(".video-title").textContent = video.titulo;
-          document.querySelector(".meta-info").textContent = `${video.views} • ${video.data}`;
-          document.querySelector(".channel-info h4").textContent = video.canal;
-          document.querySelector(".channel-info .avatar").src = video.avatar;
-          document.querySelector(".description p").textContent = video.descricao || "Este vídeo não possui descrição.";
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      feather.replace();
 
-          // Carregar vídeos sugeridos
-          fetch("videos.json")
-            .then(res => res.json())
-            .then(videos => {
-              const sugestoes = videos.filter(v => v.id !== video.id); // Remove o vídeo atual
-              const container = document.getElementById("sugestoes");
+      // Carrega vídeo atual
+      const video = JSON.parse(localStorage.getItem("currentVideo"));
+      if (!video) return window.location.href = "index.html";
 
-              sugestoes.forEach(sugestao => {
-                const div = document.createElement("div");
-                div.classList.add("suggested");
-                div.innerHTML = `
-                  <img src="${sugestao.thumb}" width="120" />
-                  <div>
-                    <h4>${sugestao.titulo}</h4>
-                    <p>${sugestao.canal}</p>
-                    <p>${sugestao.views}</p>
-                  </div>
-                `;
-                div.addEventListener("click", () => {
-                  localStorage.setItem("videoAtual", JSON.stringify(sugestao));
-                  window.location.href = "video.html";
-                });
-                container.appendChild(div);
-              });
-            });
-        } else {
-          document.querySelector(".video-title").textContent = "Vídeo não encontrado!";
-        }
+      // Preenche dados do vídeo
+      document.getElementById("videoTitle").textContent = video.titulo;
+      document.getElementById("viewsDate").textContent = `${video.views} • ${video.data}`;
+      document.getElementById("channelAvatar").src = video.avatar;
+      document.getElementById("channelName").textContent = video.canal;
+      document.getElementById("videoDescription").textContent = video.descricao || "Sem descrição.";
+      document.getElementById("videoFrame").src = video.videoUrl;
+
+      // Sistema de likes
+      let likes = 0;
+      document.getElementById("likeBtn").addEventListener("click", () => {
+        likes++;
+        document.getElementById("likeCount").textContent = likes;
       });
-    </script>
-  </body>
+
+      // Dark Mode
+      document.getElementById("darkModeToggle").addEventListener("click", () => {
+        document.body.classList.toggle("dark-mode");
+        feather.replace();
+      });
+    });
+  </script>
+</body>
 </html>

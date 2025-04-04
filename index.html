@@ -1,74 +1,102 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>YouClone</title>
-    <link rel="stylesheet" href="style.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <script src="https://unpkg.com/feather-icons"></script>
-  </head>
-  <body>
-    <!-- Cabeçalho -->
-    <header class="header">
-      <div class="header-left">
-        <i data-feather="menu" class="menu-icon"></i>
-        <div class="logo">YouClone</div>
-      </div>
-
-      <div class="search-container">
-        <div class="search-bar">
-            <input type="text" id="searchInput" placeholder="Pesquisar...">
-            <button id="searchButton">
-              <i class="fas fa-search"></i> <!-- Lupa FontAwesome -->
-            </button>
-            <button id="keyboardButton">
-              <i class="fas fa-keyboard"></i> <!-- Teclado FontAwesome -->
-            </button>
-            <button id="micButton">
-              <i class="fas fa-microphone"></i> <!-- Microfone FontAwesome -->
-            </button>
-          </div>
-      
-        <!-- Tags de Busca -->
-        <div class="search-tags"> 
-            <span>Tudo</span> 
-            <span>Jogos</span> 
-            <span>Musica</span> 
-            <span>Podcast</span> 
-            <span>Ao vivo</span> 
-        </div>
-      
-      </div>
-      
-      <div class="header-right">
-        <i data-feather="video" class="header-icon"></i>
-        <i data-feather="bell" class="header-icon"></i>
-        <i data-feather="user" class="header-icon"></i>
-      </div>
-
-    </header>
-   
-    <!-- Container principal -->
-    <div class="main-container">
-      <!-- Sidebar -->
-      <aside class="sidebar">
-        <ul>
-          <li><i data-feather="home"></i> <span>Início</span></li>
-          <li><i data-feather="zap"></i> <span>Shorts</span></li>
-          <li><i data-feather="layers"></i> <span>Inscrições</span></li>
-          <li><i data-feather="book"></i> <span>Biblioteca</span></li>
-        </ul>
-      </aside>
-
-      <!-- Vídeos -->
-      <div class="videos" id="videos"></div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>YouClone</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script src="https://unpkg.com/feather-icons"></script>
+</head>
+<body>
+  <!-- Cabeçalho -->
+  <header class="header">
+    <div class="header-left">
+      <i data-feather="menu" class="menu-icon" id="sidebarToggle"></i>
+      <div class="logo">YouClone</div>
     </div>
 
-    <!-- Script para ativar os ícones -->
-    <script>
-      feather.replace(); // Isso substitui os ícones data-feather no HTML
-    </script>
-    <script src="script.js"></script>
-  </body>
+    <div class="search-container">
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Pesquisar...">
+        <button id="searchButton"><i class="fas fa-search"></i></button>
+        <button id="micButton"><i class="fas fa-microphone"></i></button>
+      </div>
+      <div class="search-tags">
+        <span>Tudo</span>
+        <span>Jogos</span>
+        <span>Música</span>
+        <span>Podcast</span> 
+        <span>Ao vivo</span>
+      </div>
+    </div>
+
+    <div class="header-right">
+      <i data-feather="video-plus" class="header-icon"></i>
+      <i data-feather="bell" class="header-icon"></i>
+      <img src="https://placehold.co/32" class="user-avatar" alt="Usuário">
+    </div>
+  </header>
+
+  <!-- Container principal -->
+  <div class="main-container">
+    <!-- Sidebar (recolhível) -->
+    <aside class="sidebar">
+        <div class="sidebar-section">
+          <ul>
+            <li class="active"><i data-feather="home"></i> <span>Início</span></li>
+            <li><i data-feather="zap"></i> <span>Shorts</span></li>
+            <li><i data-feather="layers"></i> <span>Inscrições</span></li>
+          </ul>
+        </div>
+      
+        <!-- Seção "Você" -->
+        <div class="sidebar-section">
+          <h3>Você</h3>
+          <ul>
+            <li><i data-feather="clock"></i> <span>Histórico</span></li>
+            <li><i data-feather="list"></i> <span>Playlists</span></li>
+            <li><i data-feather="film"></i> <span>Seus vídeos</span></li>
+            <li><i data-feather="clock"></i> <span>Assistir mais tarde</span></li>
+            <li><i data-feather="thumbs-up"></i> <span>Vídeos com "Gostei"</span></li>
+          </ul>
+        </div>
+      
+        <!-- Seção "Inscrições" -->
+        <div class="sidebar-section">
+          <h3>Inscrições</h3>
+          <ul>
+            <li><img src="https://placehold.co/24" class="channel-avatar"> <span>vinículas13</span></li>
+            <li><img src="https://placehold.co/24" class="channel-avatar"> <span>Brendon Bressan</span></li>
+            <li><img src="https://placehold.co/24" class="channel-avatar"> <span>Joy Reis</span></li>
+          </ul>
+        </div>
+      
+        <!-- Seção "Descubra mais" -->
+        <div class="sidebar-section">
+          <h3>Descubra mais</h3>
+          <ul>
+            <li><i data-feather="shopping-bag"></i> <span>1 mês grátis</span></li>
+          </ul>
+        </div>
+      </aside>
+    <!-- Vídeos -->
+    <div class="videos" id="videos"></div>
+  </div>
+
+  <!-- Navbar Mobile (como no YouTube app) -->
+  <div class="mobile-bottom-nav">
+    <button><i data-feather="home"></i> <span>Início</span></button>
+    <button><i data-feather="zap"></i> <span>Shorts</span></button>
+    <button class="add-video"><i data-feather="plus-circle"></i></button>
+    <button><i data-feather="bell"></i> <span>Notificações</span></button>
+    <button><i data-feather="user"></i> <span>Você</span></button>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    feather.replace();
+  </script>
+  <script src="script.js"></script>
+</body>
 </html>

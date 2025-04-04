@@ -1,27 +1,32 @@
 document.addEventListener("DOMContentLoaded", () => {
     feather.replace();
   
-    let allVideos = []; // Para armazenar os vídeos carregados
+    // Variáveis globais
+    let allVideos = [];
+    const sidebar = document.getElementById("sidebar");
+    const sidebarToggle = document.getElementById("sidebarToggle");
   
+    // Carrega vídeos do JSON
     fetch("videos.json")
-      .then((res) => res.json())
-      .then((videos) => {
-        allVideos = videos; // Guarda os vídeos na variável global
-        renderVideos(allVideos); // Exibe os vídeos na tela
+      .then(res => res.json())
+      .then(videos => {
+        allVideos = videos;
+        renderVideos(allVideos);
       });
   
+    // Renderiza vídeos na tela
     function renderVideos(videos) {
       const container = document.getElementById("videos");
-      container.innerHTML = ""; // Limpa os vídeos anteriores
+      container.innerHTML = "";
   
-      videos.forEach((video) => {
+      videos.forEach(video => {
         const card = document.createElement("div");
-        card.classList.add("video-card");
+        card.className = "video-card";
         card.innerHTML = `
-          <img class="thumb" src="${video.thumb}" alt="Thumb" />
+          <img src="${video.thumb}" alt="${video.titulo}" class="video-thumbnail">
           <div class="video-info">
-            <img class="avatar" src="${video.avatar}" alt="Avatar" />
-            <div class="meta">
+            <img src="${video.avatar}" alt="${video.canal}" class="channel-avatar">
+            <div>
               <h4>${video.titulo}</h4>
               <p>${video.canal}</p>
               <p>${video.views} • ${video.data}</p>
@@ -29,19 +34,37 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         `;
         card.addEventListener("click", () => {
-          localStorage.setItem("videoAtual", JSON.stringify(video));
+          localStorage.setItem("currentVideo", JSON.stringify(video));
           window.location.href = "video.html";
         });
         container.appendChild(card);
       });
     }
   
-    // Função para buscar vídeos
-    document.querySelector(".search-bar input").addEventListener("input", (event) => {
-      const searchTerm = event.target.value.toLowerCase();
-      const filteredVideos = allVideos.filter((video) =>
-        video.titulo.toLowerCase().includes(searchTerm) || video.canal.toLowerCase().includes(searchTerm)
-      );
-      renderVideos(filteredVideos); // Atualiza a tela com os vídeos filtrados
+    // Sidebar toggle
+    sidebarToggle.addEventListener("click", () => {
+      sidebar.classList.toggle("collapsed");
     });
+  
+    // Busca de vídeos
+    document.getElementById("searchInput").addEventListener("input", (e) => {
+      const term = e.target.value.toLowerCase();
+      const filtered = allVideos.filter(video => 
+        video.titulo.toLowerCase().includes(term) || 
+        video.canal.toLowerCase().includes(term)
+      );
+      renderVideos(filtered);
+    });
+  
+    // Dark Mode Toggle (adicione um botão no header)
+    const darkModeToggle = document.createElement("button");
+    darkModeToggle.innerHTML = '<i data-feather="moon"></i>';
+    darkModeToggle.id = "darkModeToggle";
+    darkModeToggle.addEventListener("click", () => {
+      document.body.classList.toggle("dark-mode");
+      feather.replace();
+    });
+    document.querySelector(".header-right").prepend(darkModeToggle);
   });
+
+  
