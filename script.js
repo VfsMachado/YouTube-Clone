@@ -65,4 +65,14 @@ document.addEventListener("DOMContentLoaded", () => {
     });
     document.querySelector(".header-right").prepend(darkModeToggle);
   });
-  
+  // No seu script.js
+const urlParams = new URLSearchParams(window.location.search);
+const videoId = urlParams.get('v');
+
+// Busca os dados do vídeo com base no ID
+fetch(`/api/videos/${videoId}`)
+  .then(response => response.json())
+  .then(video => {
+    document.querySelector('.video-title').textContent = video.title;
+    // Preencha os outros campos...
+  });

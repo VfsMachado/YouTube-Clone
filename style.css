@@ -759,3 +759,137 @@
     cursor: pointer;
   }
   
+  /* PÁGINA DE VÍDEO */
+.watch-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 16px;
+    background: var(--header-light);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .watch-container {
+    display: flex;
+    padding: 20px;
+    gap: 20px;
+    max-width: 1600px;
+    margin: 0 auto;
+  }
+  
+  .watch-main {
+    flex: 1;
+    min-width: 0;
+  }
+  
+  .video-player {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    background: #000;
+    margin-bottom: 16px;
+  }
+  
+  .video-player iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  .video-title {
+    font-size: 18px;
+    margin: 12px 0;
+  }
+  
+  .video-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  
+  .action-buttons {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+  }
+  
+  .action-buttons button {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border: none;
+    padding: 8px 16px;
+    border-radius: 18px;
+    cursor: pointer;
+  }
+  
+  .channel-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+  
+  .subscribe-btn {
+    margin-left: auto;
+    background: #cc0000;
+    color: white;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 18px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+  
+  .video-description {
+    background: rgba(0, 0, 0, 0.05);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 24px;
+  }
+  
+  /* SUGESTÕES */
+  .suggestions {
+    width: 400px;
+  }
+  
+  .suggestion-card {
+    display: flex;
+    gap: 8px;
+    margin-bottom: 16px;
+    cursor: pointer;
+  }
+  
+  .suggestion-thumbnail {
+    width: 168px;
+    height: 94px;
+    border-radius: 8px;
+    object-fit: cover;
+  }
+  
+  /* RESPONSIVIDADE */
+  @media (max-width: 1200px) {
+    .watch-container {
+      flex-direction: column;
+    }
+    .suggestions {
+      width: 100%;
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 16px;
+    }
+    .suggestion-card {
+      flex-direction: column;
+    }
+    .suggestion-thumbnail {
+      width: 100%;
+    }
+  }

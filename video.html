@@ -1,101 +1,111 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Clone YouTube - Vídeo</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assistir - YouClone</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://unpkg.com/feather-icons"></script>
 </head>
 <body>
-  <div class="container">
-    
-    <!-- Área principal do vídeo -->
-    <div class="main-video">
+  <header class="watch-header">
+    <div class="header-left">
+      <i data-feather="arrow-left" onclick="history.back()"></i>
+      <div class="logo">YouClone</div>
+    </div>
+    <div class="search-container">
+      <div class="search-bar">
+        <input type="text" placeholder="Pesquisar">
+      </div>
+    </div>
+    <div class="header-right">
+      <i data-feather="video"></i>
+      <i data-feather="bell"></i>
+      <img src="https://placehold.co/32" class="user-avatar">
+    </div>
+  </header>
+
+  <main class="watch-container">
+    <div class="watch-main">
+      <!-- Player de Vídeo -->
       <div class="video-player">
-        <iframe width="100%" height="100%" src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                title="YouTube video player" frameborder="0" allowfullscreen></iframe>
+        <iframe src="https://www.youtube.com/embed/VIDEO_ID" frameborder="0" allowfullscreen></iframe>
       </div>
 
-      <div class="video-title">Título do Vídeo Muito Interessante</div>
-
-      <div class="video-stats">
-        <span>1.234.567 visualizações • 4 de abril de 2025</span>
-        <div class="actions">
-          <button>👍 Curtir</button>
-          <button>👎 Não gostei</button>
-          <button>🔗 Compartilhar</button>
+      <!-- Título e Informações -->
+      <h1 class="video-title">NOVA KINDRED 3 ESTRELAS - NOVO META ESTÁ ABSURDO</h1>
+      
+      <div class="video-actions">
+        <div class="views-date">
+          <span>72 mil visualizações</span>
+          <span>•</span>
+          <span>há 1 dia</span>
+        </div>
+        <div class="action-buttons">
+          <button><i data-feather="thumbs-up"></i> 2,1 mil</button>
+          <button><i data-feather="thumbs-down"></i> Não gostei</button>
+          <button><i data-feather="share-2"></i> Compartilhar</button>
+          <button><i data-feather="download"></i> Download</button>
         </div>
       </div>
 
-      <div class="channel">
-        <img src="https://i.pravatar.cc/48?img=10" alt="Avatar do Canal" />
-        <div class="channel-info">
-          <h4>Canal Exemplo</h4>
-          <span>2,34 mi de inscritos</span>
+      <!-- Canal -->
+      <div class="channel-info">
+        <img src="https://placehold.co/48" class="channel-avatar">
+        <div class="channel-details">
+          <h3>Oolina</h3>
+          <p>1,2 mi de inscritos</p>
         </div>
-        <button class="subscribe-btn">INSCREVA-SE</button>
+        <button class="subscribe-btn">Inscrever-se</button>
       </div>
 
-      <div class="description">
-        Este é um vídeo demonstrativo de um clone do YouTube feito com HTML e CSS.
-        Aqui você pode colocar uma descrição completa do vídeo com links, hashtags e outras informações.
+      <!-- Descrição -->
+      <div class="video-description">
+        <p>Descrição do vídeo aqui... Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam in dui mauris.</p>
+        <button class="show-more">Mostrar mais</button>
       </div>
 
-      <div class="comments">
-        <h3>3 Comentários</h3>
+      <!-- Comentários -->
+      <div class="comments-section">
+        <h3><span>423 comentários</span> <button>Ordenar por</button></h3>
+        
+        <div class="add-comment">
+          <img src="https://placehold.co/40" class="user-avatar">
+          <input type="text" placeholder="Adicione um comentário...">
+        </div>
 
+        <!-- Lista de comentários -->
         <div class="comment">
-          <img src="https://i.pravatar.cc/36?img=21" alt="Avatar Comentário" />
+          <img src="https://placehold.co/40" class="user-avatar">
           <div class="comment-content">
-            <strong>Usuário123</strong>
-            Muito bom esse vídeo! O clone está ficando incrível.
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/36?img=25" alt="Avatar Comentário" />
-          <div class="comment-content">
-            <strong>Mariazinha</strong>
-            Parabéns pelo projeto! Ficou super parecido com o YouTube.
-          </div>
-        </div>
-
-        <div class="comment">
-          <img src="https://i.pravatar.cc/36?img=32" alt="Avatar Comentário" />
-          <div class="comment-content">
-            <strong>DevLucas</strong>
-            Curti a ideia! Agora falta só colocar os vídeos reais.
+            <h4>Nome do Usuário <span>2 dias atrás</span></h4>
+            <p>Este vídeo é incrível! Aprendi muito com essas dicas.</p>
+            <div class="comment-actions">
+              <button><i data-feather="thumbs-up"></i> 24</button>
+              <button><i data-feather="thumbs-down"></i></button>
+              <button>Responder</button>
+            </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Barra lateral -->
-    <div class="sidebar">
-      <div class="suggestion">
-        <img src="https://img.youtube.com/vi/tgbNymZ7vqY/mqdefault.jpg" alt="Miniatura">
+    <!-- Sidebar de Sugestões -->
+    <aside class="suggestions">
+      <div class="suggestion-card">
+        <img src="https://placehold.co/168x94" class="suggestion-thumbnail">
         <div class="suggestion-info">
-          <h4>Outro vídeo legal</h4>
-          <p>Canal XYZ<br>530 mil visualizações</p>
+          <h4>PERSONAGENS QUE NÃO SÃO CHAMPIONS</h4>
+          <p>Cortes do Mylon</p>
+          <p>133 mil visualizações • há 2 meses</p>
         </div>
       </div>
+      <!-- Mais sugestões... -->
+    </aside>
+  </main>
 
-      <div class="suggestion">
-        <img src="https://img.youtube.com/vi/kJQP7kiw5Fk/mqdefault.jpg" alt="Miniatura">
-        <div class="suggestion-info">
-          <h4>Vídeo de música</h4>
-          <p>VEVO Music<br>1,2 bilhões de views</p>
-        </div>
-      </div>
-
-      <div class="suggestion">
-        <img src="https://img.youtube.com/vi/E7wJTI-1dvQ/mqdefault.jpg" alt="Miniatura">
-        <div class="suggestion-info">
-          <h4>Documentário completo</h4>
-          <p>Canal História<br>740 mil visualizações</p>
-        </div>
-      </div>
-    </div>
-  </div>
+  <script>
+    feather.replace();
+  </script>
 </body>
 </html>
